@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :blogs
-  resources :users
+  namespace :api do
+    namespace :v1 do
+      resources :comments
+      resources :blogs
+      resources :users
+    end
+  end
+  post '/login', to: 'base#login'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

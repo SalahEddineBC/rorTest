@@ -1,4 +1,4 @@
-class BlogsController < ApplicationController
+class Api::V1::BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :update, :destroy]
 
   # GET /blogs
@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
-    render json: @blog
+    render json: @blog.to_json( :include => [:comments] )
   end
 
   # POST /blogs
@@ -41,7 +41,9 @@ class BlogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      @blog = Blog.includes(:comments).where(:id =>params[:id]).first
+      puts @blog.comments
+
     end
 
     # Only allow a trusted parameter "white list" through.
