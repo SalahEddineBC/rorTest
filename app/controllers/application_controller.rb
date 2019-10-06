@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::API
     @@exp = Time.now + 24.hours.to_i
     @@hmac_secret = 'shhh this is secret!'
-    def not_found
-        render json: { error: 'not_found' }, status: :unauthorized
-    end
+   
     
     def authorize_request
         header = request.headers['Authorization']
