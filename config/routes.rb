@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
   post '/login', to: 'base#login'
-  get '/*a', to: 'base#not_found'
+  get '*a', to: 'base#not_found'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

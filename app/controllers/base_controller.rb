@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
     def not_found
-        render json: { error: 'not_found' }, status: :unauthorized
+        render json: { error: 'route doesn\'t exist' }, status: :unauthorized
     end
     def login
         @user = User.where("username=?",params[:username]).first
