@@ -1,5 +1,4 @@
 class BaseController < ApplicationController
-    before_action :authorize_request, except: :login
     def not_found
         render json: { error: 'not_found' }, status: :unauthorized
     end
